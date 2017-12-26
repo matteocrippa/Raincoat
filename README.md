@@ -13,6 +13,7 @@ analytics.log(MyEvent.SignUp("username"))
 ```
 
 ### Setup
+
 Using `Kotlin` sealed class we can easily setup all things that we will have to track:
 
 ```kotlin
@@ -44,8 +45,11 @@ sealed class MyEvent : EventType {
 ### Providers
 At this very moment we developed the following built-in providers:
 
-- Firebase Analytics
+- [Firebase Analytics](https://firebase.google.com/docs/analytics/)
 
+In order to use them, you have to add to your project the library of the provider, otherwise the build will fail.
+
+#### Custom
 You can easily create your own providers, you can use this for reference:
 
 ```kotlin
