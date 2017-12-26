@@ -55,7 +55,7 @@ sealed class MyEvent : EventType {
 ### Providers
 At this very moment we developed the following built-in providers:
 
-- [Firebase Analytics](https://firebase.google.com/docs/analytics/)
+- [Firebase Analytics](https://firebase.google.com/docs/analytics/android/start/)
 
 In order to use them, you have to add to your project the library of the provider, otherwise the build will fail.
 
