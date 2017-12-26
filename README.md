@@ -111,3 +111,6 @@ then add the repository
 ```aidl
 compile 'com.github.matteocrippa:Raincoat:0.0.1'
 ```
+
+## License
+Raincoat is under MIT license. See the [LICENSE](LICENSE) file for more info.
