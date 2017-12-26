@@ -65,17 +65,17 @@ In order to use them, you have to add to your project the library of the provide
 You can easily create your own providers, you can use this for reference:
 
 ```kotlin
-class FirebaseProvider(private val context: Context) : ProviderType {
+class MixpanelProvider(private val context: Context, private val projectToken: String) : ProviderType {
 
-    override var className = Class.forName("com.google.firebase.analytics.FirebaseAnalytics")
-    override var classInstance = className.getDeclaredMethod("getInstance", Context::class.java)
-    override var classFunction = className.getDeclaredMethod("logEvent", String::class.java, Bundle::class.java)
+    override var className = Class.forName("com.mixpanel.android.mpmetrics.MixpanelAPI")
+    override var classInstance = className.getDeclaredMethod("getInstance", Context::class.java, String::class.java)
+    override var classFunction = className.getDeclaredMethod("track", String::class.java, JSONObject::class.java)
 
     init {
         classInstance?.let {
             // get context
             try {
-                it.invoke(className, context)
+                it.invoke(className, context, projectToken)
             } catch (e: Exception) {
                 Log.e("Raincoat", e.localizedMessage)
             }
@@ -83,25 +83,8 @@ class FirebaseProvider(private val context: Context) : ProviderType {
     }
 
     override fun log(eventName: String, parameters: HashMap<String, Any>?) {
-        val bundle = Bundle()
-        parameters?.forEach { pair ->
-            when (pair.value) {
-                is Int -> {
-                    bundle.putInt(pair.key, pair.value as Int)
-                }
-                is Float -> {
-                    bundle.putFloat(pair.key, pair.value as Float)
-                }
-                is Double -> {
-                    bundle.putDouble(pair.key, pair.value as Double)
-                }
-                is String -> {
-                    bundle.putString(pair.key, pair.value as String)
-                }
-            }
-        }
         try {
-            classFunction.invoke(classInstance, eventName, bundle)
+            classFunction.invoke(classInstance, eventName, JSONObject(parameters))
         } catch (e: Exception) {
             Log.e("Raincoat", e.localizedMessage)
         }
