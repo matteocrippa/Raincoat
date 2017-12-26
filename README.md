@@ -123,7 +123,7 @@ allprojects {
 then add the repository
 
 ```aidl
-compile 'com.github.matteocrippa:Raincoat:0.0.1'
+compile 'com.github.matteocrippa:Raincoat:master-SNAPSHOT'
 ```
 
 ## License
