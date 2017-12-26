@@ -1,54 +1,13 @@
-# 🧥 Raincoat
-Analytics abstraction layer for Kotlin inspired by [Umbrella](https://github.com/devxoul/Umbrella).
+package matteocrippa.it.raincoat.firebaseprovider
 
-## Getting Started
+import android.content.Context
+import android.os.Bundle
+import android.util.Log
+import matteocrippa.it.raincoat.ProviderType
 
-As you can see it is really simple to log with different analytics with a simple function:
-
-```kotlin
-val analytics = Raincoat<MyEvent>()
-analytics.register(FirebaseProvider(context))
-analytics.register(MixpanelProvider(context))
-analytics.log(MyEvent.SignUp("username"))
-```
-
-### Setup
-Using `Kotlin` sealed class we can easily setup all things that we will have to track:
-
-```kotlin
-sealed class MyEvent : EventType {
-
-    class SignUp(username: String) : MyEvent()
-    class Register(username: String, password: String) : MyEvent()
-
-    override fun name(provider: ProviderType): String? {
-        return when (this) {
-            is SignUp -> "signUp"
-            is Register -> "register"
-        }
-    }
-
-    override fun parameters(provider: ProviderType): HashMap<String, Any>? {
-        return when (this) {
-            is SignUp -> {
-                hashMapOf()
-            }
-            is Register -> {
-                hashMapOf("username" to this.username, "password" to this.password))
-            }
-        }
-    }
-}
-```
-
-### Providers
-At this very moment we developed the following built-in providers:
-
-- Firebase Analytics
-
-You can easily create your own providers, you can use this for reference:
-
-```kotlin
+/**
+ * Created by matteocrippa on 26/12/2017.
+ */
 class FirebaseProvider(private val context: Context) : ProviderType {
 
     override var className = Class.forName("com.google.firebase.analytics.FirebaseAnalytics")
@@ -91,6 +50,3 @@ class FirebaseProvider(private val context: Context) : ProviderType {
         }
     }
 }
-```
-
-## Installation
