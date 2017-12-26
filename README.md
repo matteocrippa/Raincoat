@@ -1,6 +1,16 @@
 # 🧥 Raincoat
 Analytics abstraction layer for Kotlin inspired by [Umbrella](https://github.com/devxoul/Umbrella).
 
+## Table of Contents
+
+* [Getting Started](#getting-started)
+    * [Example](#example)
+    * [Providers](#providers)
+        * [Custom Provider](#custom-provider)
+    * [Creating Custom Providers](#creating-custom-providers)
+* [Installation](#installation)
+* [License](#license)
+
 ## Getting Started
 
 As you can see it is really simple to log with different analytics with a simple function:
@@ -12,7 +22,7 @@ analytics.register(MixpanelProvider(context))
 analytics.log(MyEvent.SignUp("username"))
 ```
 
-### Setup
+### Example
 
 Using `Kotlin` sealed class we can easily setup all things that we will have to track:
 
@@ -49,7 +59,7 @@ At this very moment we developed the following built-in providers:
 
 In order to use them, you have to add to your project the library of the provider, otherwise the build will fail.
 
-#### Custom
+#### Custom Provider
 You can easily create your own providers, you can use this for reference:
 
 ```kotlin
