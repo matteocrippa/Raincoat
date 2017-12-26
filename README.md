@@ -56,6 +56,8 @@ sealed class MyEvent : EventType {
 At this very moment we developed the following built-in providers:
 
 - [Firebase Analytics](https://firebase.google.com/docs/analytics/android/start/)
+- [Flurry](https://developer.yahoo.com/flurry/docs/analytics/gettingstarted/android/)
+- [Localytics](https://docs.localytics.com/dev/android.html#standard-event-logged-out-android)
 - [Mixpanel](https://mixpanel.com/help/reference/android)
 
 
