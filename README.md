@@ -94,3 +94,20 @@ class FirebaseProvider(private val context: Context) : ProviderType {
 ```
 
 ## Installation
+
+Add to your `build.gradle`:
+
+```gradle
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
+then add the repository
+
+```aidl
+compile 'com.github.matteocrippa:Raincoat:0.0.1'
+```
