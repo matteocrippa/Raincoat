@@ -1,6 +1,4 @@
 # 🧥 Raincoat
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Raincoat-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/6608)
-
 Analytics abstraction layer for Kotlin inspired by [Umbrella](https://github.com/devxoul/Umbrella).
 
 ## Table of Contents
